@@ -18,9 +18,9 @@ string LoadingBar::toString()
 
 	// Construct message
 	ss << _cLeft;
-	for (size_t i = 0; i < progressed; i++)
+	for (int i = 0; i < progressed; i++)
 		ss << _cProgress;
-	for (size_t i = 0; i < _size - progressed; i++)
+	for (int i = 0; i < _size - progressed; i++)
 		ss << _cEmpty;
 	ss << _cRight;
 
@@ -35,7 +35,16 @@ void LoadingBar::print()
 
 int LoadingBar::calcProgress()
 {
-	return round(double(_size * _progress) / double(_max));
+	return int(round(double(_size * _progress) / double(_max)));
+}
+
+int LoadingBar::clampedProgress()
+{
+	return _progress > _max ? 
+		_max : 
+		_progress < _min ? 
+			_min : 
+			_progress;
 }
 
 ostream& operator<<(ostream &os, LoadingBar &lb)

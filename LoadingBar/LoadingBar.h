@@ -39,7 +39,12 @@ public:
 	friend ostream& operator<<(ostream& os, const LoadingBar& lb);
 private:
 	// Private functions
+
+	// Calculates the progress
 	int calcProgress();
+
+	// Clamps the progress between min and max
+	int clampedProgress();
 
 	// Private datamembers
 	int _min, _max, _size, _progress, _lastProgress;
