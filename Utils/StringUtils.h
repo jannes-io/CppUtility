@@ -15,12 +15,12 @@ namespace str
 		vector<string> result;
 	
 		size_t pos(0);
-		while ((pos = s.find(delim)) != string::npos) {
-			const auto token = s.substr(0, pos);
+		while ((pos = str.find(delim)) != string::npos) {
+			const auto token = str.substr(0, pos);
 			result.push_back(token);
-			s.erase(0, pos + delim.length());
+			str.erase(0, pos + delim.length());
 		}
-		result.push_back(s);
+		result.push_back(str);
 	
 		return result;
 	}
